@@ -60,9 +60,9 @@ class PTR(object):
 p = DBParser()
 countries = p.parse(file(sys.argv[2]))
 rules = create_rules(countries)
-rules.sort(cmp=lambda x, y: cmp(x.freqband, y.freqband))
+rules.sort()
 collections = create_collections(countries)
-collections.sort(cmp=lambda x, y: cmp(x[0][0].freqband, y[0][0].freqband))
+collections.sort()
 
 output = StringIO()
 

@@ -50,18 +50,22 @@ class PTR(object):
 
 p = DBParser()
 countries = p.parse(file(sys.argv[2]))
+
+countrynames = countries.keys()
+countrynames.sort()
+
 power = []
 bands = []
-for c in countries.itervalues():
-    for perm in c.permissions:
+for alpha2 in countrynames:
+    for perm in countries[alpha2].permissions:
         if not perm.freqband in bands:
             bands.append(perm.freqband)
         if not perm.power in power:
             power.append(perm.power)
 rules = create_rules(countries)
-rules.sort(cmp=lambda x, y: cmp(x.freqband, y.freqband))
+rules.sort()
 collections = create_collections(countries)
-collections.sort(cmp=lambda x, y: cmp(x[0].freqband, y[0].freqband))
+collections.sort()
 
 output = StringIO()
 
@@ -104,15 +108,13 @@ for coll in collections:
     # struct regdb_file_reg_rules_collection
     coll = list(coll)
     be32(output, len(coll))
-    coll.sort(cmp=lambda x, y: cmp(x.freqband, y.freqband))
+    coll.sort()
     for regrule in coll:
         be32(output, reg_rules[regrule])
 
 # update country pointer now!
 reg_country_ptr.set()
 
-countrynames = countries.keys()
-countrynames.sort()
 for alpha2 in countrynames:
     coll = countries[alpha2]
     # struct regdb_file_reg_country
