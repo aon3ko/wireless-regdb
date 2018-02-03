@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from cStringIO import StringIO
+from io import BytesIO, open
 import struct
 import hashlib
 from dbparse import DBParser
@@ -10,21 +10,21 @@ MAGIC = 0x52474442
 VERSION = 19
 
 if len(sys.argv) < 3:
-    print 'Usage: %s output-file input-file [key-file]' % sys.argv[0]
+    print('Usage: %s output-file input-file [key-file]' % sys.argv[0])
     sys.exit(2)
 
 def create_rules(countries):
     result = {}
-    for c in countries.itervalues():
+    for c in countries.values():
         for rule in c.permissions:
             result[rule] = 1
-    return result.keys()
+    return list(result)
 
 def create_collections(countries):
     result = {}
-    for c in countries.itervalues():
+    for c in countries.values():
         result[c.permissions] = 1
-    return result.keys()
+    return list(result)
 
 
 def be32(output, val):
@@ -49,9 +49,9 @@ class PTR(object):
         return self._offset
 
 p = DBParser()
-countries = p.parse(file(sys.argv[2]))
+countries = p.parse(open(sys.argv[2], 'r', encoding='utf-8'))
 
-countrynames = countries.keys()
+countrynames = list(countries)
 countrynames.sort()
 
 power = []
@@ -67,7 +67,7 @@ rules.sort()
 collections = create_collections(countries)
 collections.sort()
 
-output = StringIO()
+output = BytesIO()
 
 # struct regdb_file_header
 be32(output, MAGIC)
@@ -118,7 +118,7 @@ reg_country_ptr.set()
 for alpha2 in countrynames:
     coll = countries[alpha2]
     # struct regdb_file_reg_country
-    output.write(struct.pack('>ccxBI', str(alpha2[0]), str(alpha2[1]), coll.dfs_region, reg_rules_collections[coll.permissions]))
+    output.write(struct.pack('>BBxBI', alpha2[0], alpha2[1], coll.dfs_region, reg_rules_collections[coll.permissions]))
 
 
 if len(sys.argv) > 3:
@@ -143,5 +143,5 @@ if len(sys.argv) > 3:
 else:
     siglen.set(0)
 
-outfile = open(sys.argv[1], 'w')
+outfile = open(sys.argv[1], 'wb')
 outfile.write(output.getvalue())

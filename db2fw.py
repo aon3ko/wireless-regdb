@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from cStringIO import StringIO
+from io import BytesIO, open
 import struct
 import hashlib
 from dbparse import DBParser
@@ -10,21 +10,21 @@ MAGIC = 0x52474442
 VERSION = 20
 
 if len(sys.argv) < 3:
-    print 'Usage: %s output-file input-file' % sys.argv[0]
+    print('Usage: %s output-file input-file' % sys.argv[0])
     sys.exit(2)
 
 def create_rules(countries):
     result = {}
-    for c in countries.itervalues():
+    for c in countries.values():
         for rule in c.permissions:
             result[rule] = 1
-    return result.keys()
+    return list(result)
 
 def create_collections(countries):
     result = {}
-    for c in countries.itervalues():
+    for c in countries.values():
         result[(c.permissions, c.dfs_region)] = 1
-    return result.keys()
+    return list(result)
 
 
 def be32(output, val):
@@ -58,26 +58,26 @@ class PTR(object):
         return self._written
 
 p = DBParser()
-countries = p.parse(file(sys.argv[2]))
+countries = p.parse(open(sys.argv[2], 'r', encoding='utf-8'))
 rules = create_rules(countries)
 rules.sort()
 collections = create_collections(countries)
 collections.sort()
 
-output = StringIO()
+output = BytesIO()
 
 # struct regdb_file_header
 be32(output, MAGIC)
 be32(output, VERSION)
 
 country_ptrs = {}
-countrynames = countries.keys()
+countrynames = list(countries)
 countrynames.sort()
 for alpha2 in countrynames:
     coll = countries[alpha2]
-    output.write(struct.pack('>cc', str(alpha2[0]), str(alpha2[1])))
+    output.write(struct.pack('>BB', alpha2[0], alpha2[1]))
     country_ptrs[alpha2] = PTR(output)
-output.write('\x00' * 4)
+output.write(b'\x00' * 4)
 
 reg_rules = {}
 flags = 0
@@ -104,8 +104,8 @@ for reg_rule in rules:
         cac_timeout = 0
     if cac_timeout:
         rule_len += 2
-    output.write(struct.pack('>BBHIII', rule_len, flags, power_rule.max_eirp * 100,
-                             freq_range.start * 1000, freq_range.end * 1000, freq_range.maxbw * 1000,
+    output.write(struct.pack('>BBHIII', rule_len, flags, int(power_rule.max_eirp * 100),
+                             int(freq_range.start * 1000), int(freq_range.end * 1000), int(freq_range.maxbw * 1000),
                              ))
     if cac_timeout:
         output.write(struct.pack('>H', cac_timeout))
@@ -129,5 +129,5 @@ for coll in collections:
 for alpha2 in countrynames:
     assert country_ptrs[alpha2].written
 
-outfile = open(sys.argv[1], 'w')
+outfile = open(sys.argv[1], 'wb')
 outfile.write(output.getvalue())

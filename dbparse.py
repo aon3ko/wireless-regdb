@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from builtins import bytes
+from functools import total_ordering
 import sys, math
 
 # must match <linux/nl80211.h> enum nl80211_reg_rule_flags
@@ -25,6 +27,7 @@ dfs_regions = {
     'DFS-JP':		3,
 }
 
+@total_ordering
 class FreqBand(object):
     def __init__(self, start, end, bw, comments=None):
         self.start = start
@@ -32,41 +35,49 @@ class FreqBand(object):
         self.maxbw = bw
         self.comments = comments or []
 
-    def __cmp__(self, other):
-        s = self
-        o = other
-        if not isinstance(o, FreqBand):
-            return False
-        return cmp((s.start, s.end, s.maxbw), (o.start, o.end, o.maxbw))
+    def _as_tuple(self):
+        return (self.start, self.end, self.maxbw)
+
+    def __eq__(self, other):
+        return (self._as_tuple() == other._as_tuple())
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return (self._as_tuple() < other._as_tuple())
 
     def __hash__(self):
-        s = self
-        return hash((s.start, s.end, s.maxbw))
+        return hash(self._as_tuple())
 
     def __str__(self):
         return '<FreqBand %.3f - %.3f @ %.3f>' % (
                   self.start, self.end, self.maxbw)
 
+@total_ordering
 class PowerRestriction(object):
     def __init__(self, max_ant_gain, max_eirp, comments = None):
         self.max_ant_gain = max_ant_gain
         self.max_eirp = max_eirp
         self.comments = comments or []
 
-    def __cmp__(self, other):
-        s = self
-        o = other
-        if not isinstance(o, PowerRestriction):
-            return False
-        return cmp((s.max_ant_gain, s.max_eirp),
-                   (o.max_ant_gain, o.max_eirp))
+    def _as_tuple(self):
+        return (self.max_ant_gain, self.max_eirp)
+
+    def __eq__(self, other):
+        return (self._as_tuple() == other._as_tuple())
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return (self._as_tuple() < other._as_tuple())
+
+    def __hash__(self):
+        return hash(self._as_tuple())
 
     def __str__(self):
         return '<PowerRestriction ...>'
-
-    def __hash__(self):
-        s = self
-        return hash((s.max_ant_gain, s.max_eirp))
 
 class DFSRegionError(Exception):
     def __init__(self, dfs_region):
@@ -76,6 +87,7 @@ class FlagError(Exception):
     def __init__(self, flag):
         self.flag = flag
 
+@total_ordering
 class Permission(object):
     def __init__(self, freqband, power, flags):
         assert isinstance(freqband, FreqBand)
@@ -92,10 +104,14 @@ class Permission(object):
     def _as_tuple(self):
         return (self.freqband, self.power, self.flags)
 
-    def __cmp__(self, other):
-        if not isinstance(other, Permission):
-            return False
-        return cmp(self._as_tuple(), other._as_tuple())
+    def __eq__(self, other):
+        return (self._as_tuple() == other._as_tuple())
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        return (self._as_tuple() < other._as_tuple())
 
     def __hash__(self):
         return hash(self._as_tuple())
@@ -104,12 +120,12 @@ class Country(object):
     def __init__(self, dfs_region, permissions=None, comments=None):
         self._permissions = permissions or []
         self.comments = comments or []
-	self.dfs_region = 0
+        self.dfs_region = 0
 
-	if dfs_region:
-		if not dfs_region in dfs_regions:
-		    raise DFSRegionError(dfs_region)
-		self.dfs_region = dfs_regions[dfs_region]
+        if dfs_region:
+            if not dfs_region in dfs_regions:
+                raise DFSRegionError(dfs_region)
+            self.dfs_region = dfs_regions[dfs_region]
 
     def add(self, perm):
         assert isinstance(perm, Permission)
@@ -248,6 +264,7 @@ class DBParser(object):
         for cname in cnames:
             if len(cname) != 2:
                 self._warn("country '%s' not alpha2" % cname)
+            cname = bytes(cname, 'ascii')
             if not cname in self._countries:
                 self._countries[cname] = Country(dfs_region, comments=self._comments)
             self._current_countries[cname] = self._countries[cname]
@@ -304,9 +321,9 @@ class DBParser(object):
         p = self._power[pname]
         try:
             perm = Permission(b, p, flags)
-        except FlagError, e:
+        except FlagError as e:
             self._syntax_error("Invalid flag '%s'" % e.flag)
-        for cname, c in self._current_countries.iteritems():
+        for cname, c in self._current_countries.items():
             if perm in c:
                 self._warn('Rule "%s, %s" added to "%s" twice' % (
                               bname, pname, cname))
@@ -360,7 +377,7 @@ class DBParser(object):
 
         countries = self._countries
         bands = {}
-        for k, v in self._bands.iteritems():
+        for k, v in self._bands.items():
             if k in self._bands_used:
                 bands[self._banddup[k]] = v
                 continue
@@ -369,7 +386,7 @@ class DBParser(object):
                 self._lineno = self._bandline[k]
                 self._warn('Unused band definition "%s"' % k)
         power = {}
-        for k, v in self._power.iteritems():
+        for k, v in self._power.items():
             if k in self._power_used:
                 power[self._powerdup[k]] = v
                 continue
