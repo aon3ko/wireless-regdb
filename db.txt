@@ -963,11 +963,15 @@ country OM: DFS-ETSI
 	(5250 - 5330 @ 80), (20), DFS, AUTO-BW
 	(5490 - 5710 @ 160), (27), DFS
 
+# Source:
+# http://www.asep.gob.pa/images/telecomunicaciones/Anexos/PNAF-dic2015.pdf
 country PA: DFS-FCC
-	(2402 - 2472 @ 40), (30)
-	(5170 - 5250 @ 80), (17), AUTO-BW
-	(5250 - 5330 @ 80), (23), DFS, AUTO-BW
-	(5735 - 5835 @ 80), (30)
+	(2400 - 2483.5 @ 40), (36)
+	(5150 - 5250 @ 80), (36), AUTO-BW
+	(5250 - 5350 @ 80), (30), AUTO-BW
+	(5470 - 5725 @ 160), (30)
+	(5725 - 5850 @ 80), (36)
+	(57000 - 64000 @ 2160), (43)
 
 country PE: DFS-FCC
 	(2402 - 2482 @ 40), (20)
