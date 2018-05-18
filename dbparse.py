@@ -32,7 +32,7 @@ dfs_regions = {
 
 @total_ordering
 
-@attr.s(frozen=True)
+@attr.s(frozen=True, cmp=False)
 class WmmRule(object):
     vo_c = attr.ib()
     vi_c = attr.ib()
@@ -46,6 +46,22 @@ class WmmRule(object):
     def _as_tuple(self):
         return (self.vo_c, self.vi_c, self.be_c, self.bk_c,
                 self.vo_ap, self.vi_ap, self.be_ap, self.bk_ap)
+
+    def __eq__(self, other):
+        if other is None:
+            return False
+        return (self._as_tuple() == other._as_tuple())
+
+    def __ne__(self, other):
+        return not (self == other)
+
+    def __lt__(self, other):
+        if other is None:
+            return False
+        return (self._as_tuple() < other._as_tuple())
+
+    def __hash__(self):
+        return hash(self._as_tuple())
 
 class FreqBand(object):
     def __init__(self, start, end, bw, comments=None):
