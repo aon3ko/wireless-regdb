@@ -29,7 +29,7 @@ def create_collections(countries):
 
 def create_wmms(countries):
     result = {}
-    for c in countries.itervalues():
+    for c in countries.values():
         for rule in c.permissions:
             if rule.wmmrule is not None:
                 result[rule.wmmrule] = 1
