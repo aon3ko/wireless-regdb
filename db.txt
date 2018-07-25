@@ -581,13 +581,25 @@ country HT: DFS-FCC
 	(5490 - 5730 @ 160), (24), DFS
 	(5735 - 5835 @ 80), (30)
 
+# http://stir.nmhh.hu/?oldal=dokumentumGeneralo&root_rendeletelem_id=3&hatalyos=1
+# http://english.nmhh.hu/cikk/297/Eljarasi_tajekoztato_a_24_GHzes_es_az_5_GHzes_savban_mukodo_berendezesek_engedelyezeserol
+# http://nmhh.hu/dokumentum/319/kis_hatotavolsagu_eszkozok_srdk.pdf
 country HU: DFS-ETSI
-	(2402 - 2482 @ 40), (20)
-	(5170 - 5250 @ 80), (20), AUTO-BW, wmmrule=ETSI
-	(5250 - 5330 @ 80), (20), DFS, AUTO-BW, wmmrule=ETSI
-	(5490 - 5710 @ 160), (27), DFS, wmmrule=ETSI
-	# 60 GHz band channels 1-4, ref: Etsi En 302 567
-	(57000 - 66000 @ 2160), (40)
+	# ref: 2006/771/EK, (EU) 2017/1483, MSZ EN 300 328
+	# additionally: 100mW @ 10MHz channels, 50mW @ 5MHz (max. 10mW/MHz)
+	(2400 - 2483.5 @ 40), (20)
+	# ref: 2005/513/EK
+	# note: TPC not needed @ 5150-5250
+	(5150 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
+	# note: max would be +3dB with TPC @ 5250-5725
+	(5250 - 5350 @ 80), (20), NO-OUTDOOR, DFS, AUTO-BW, wmmrule=ETSI
+	(5470 - 5725 @ 160), (27), DFS, wmmrule=ETSI
+	# "Short Range Devices (SRD)"
+	# ref: 2006/771/EK, (EU) 2017/1483, MSZ EN 300 440, MSZ EN 302 064
+	(5725 - 5875 @ 80), (25 mW)
+	# 60 GHz band channels 1-4, "Fixed outdoor installation not allowed"
+	# ref: 2006/771/EK, (EU) 2017/1483, MSZ EN 302 567
+	(57000 - 66000 @ 2160), (40), NO-OUTDOOR
 
 country ID: DFS-JP
 	# ref: http://www.postel.go.id/content/ID/regulasi/standardisasi/kepdir/bwa%205,8%20ghz.pdf
