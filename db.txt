@@ -265,10 +265,14 @@ country CF: DFS-FCC
 	(5490 - 5730 @ 40), (24), DFS
 	(5735 - 5835 @ 40), (30)
 
+# Source:
+# https://www.ofcomnet.ch/#/fatTable
+# Note that the maximum transmitter power can be doubled for 5250-5710MHz if
+# transmitter power control is in use: 5250-5330@23db, 5490-5710@30db
 country CH: DFS-ETSI
 	(2402 - 2482 @ 40), (20)
-	(5170 - 5250 @ 80), (20), AUTO-BW, wmmrule=ETSI
-	(5250 - 5330 @ 80), (20), DFS, AUTO-BW, wmmrule=ETSI
+	(5170 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
+	(5150 - 5330 @ 80), (20), NO-OUTDOOR, DFS, AUTO-BW, wmmrule=ETSI
 	(5490 - 5710 @ 160), (27), DFS, wmmrule=ETSI
 	# 60 GHz band channels 1-4, ref: Etsi En 302 567
 	(57000 - 66000 @ 2160), (40)
@@ -745,11 +749,17 @@ country LC: DFS-ETSI
 	(5490 - 5710 @ 160), (30), DFS
 	(5735 - 5815 @ 80), (30)
 
+# Source:
+# https://www.ofcomnet.ch/#/fatTable
+# Note that the maximum transmitter power can be doubled for 5250-5710MHz if
+# transmitter power control is in use: 5250-5330@23db, 5490-5710@30db
 country LI: DFS-ETSI
 	(2402 - 2482 @ 40), (20)
-	(5170 - 5250 @ 80), (20), AUTO-BW, wmmrule=ETSI
-	(5250 - 5330 @ 80), (20), DFS, AUTO-BW, wmmrule=ETSI
+	(5170 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
+	(5150 - 5330 @ 80), (20), NO-OUTDOOR, DFS, AUTO-BW, wmmrule=ETSI
 	(5490 - 5710 @ 160), (27), DFS, wmmrule=ETSI
+	# 60 GHz band channels 1-4, ref: Etsi En 302 567
+	(57000 - 66000 @ 2160), (40)
 
 country LK: DFS-FCC
 	(2402 - 2482 @ 40), (20)
