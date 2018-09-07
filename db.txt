@@ -315,9 +315,10 @@ country CR: DFS-FCC
 	(5490 - 5730 @ 20), (24), DFS
 	(5735 - 5835 @ 20), (30)
 
+# Source:
 # http://www.mincom.gob.cu/?q=marcoregulatorio
 # - Redes Informáticas
-# Resolución 127, 2011 - Reglamento Banda 2,4 GHz.
+# Resolución 127- 2011 Reglamento de Banda de frecuencias de 2,4 GHz.
 country CU: DFS-FCC
 	(2400 - 2483.5 @ 40), (200 mW)
 
@@ -436,13 +437,9 @@ country EG: DFS-ETSI
 	(5170 - 5250 @ 40), (20)
 	(5250 - 5330 @ 40), (20), DFS
 
-# Orden IET/787/2013, de 25 de abril, por la que se aprueba
-# el cuadro nacional de atribución de frecuencias.
-# http://www.boe.es/diario_boe/txt.php?id=BOE-A-2013-4845
-#
-# more info at "Cuadro nacional de atribución de frecuencias (CNAF)":
-# http://www.minetur.gob.es/telecomunicaciones/espectro/paginas/cnaf.aspx
-
+# Source:
+# Cuadro nacional de atribución de frecuencias (CNAF)
+# http://www.mincotur.gob.es/telecomunicaciones/espectro/paginas/cnaf.aspx
 country ES: DFS-ETSI
 	(2400 - 2483.5 @ 40), (100 mW)
 	(5150 - 5250 @ 80), (200 mW), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
