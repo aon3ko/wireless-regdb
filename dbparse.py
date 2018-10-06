@@ -5,7 +5,6 @@ from functools import total_ordering
 import sys, math
 from math import ceil, log
 from collections import defaultdict, OrderedDict
-import attr
 
 # must match <linux/nl80211.h> enum nl80211_reg_rule_flags
 
@@ -32,16 +31,17 @@ dfs_regions = {
 
 @total_ordering
 
-@attr.s(frozen=True, cmp=False)
 class WmmRule(object):
-    vo_c = attr.ib()
-    vi_c = attr.ib()
-    be_c = attr.ib()
-    bk_c = attr.ib()
-    vo_ap = attr.ib()
-    vi_ap = attr.ib()
-    be_ap = attr.ib()
-    bk_ap = attr.ib()
+
+    def __init__(self, vo_c, vi_c, be_c, bk_c, vo_ap, vi_ap, be_ap, bk_ap):
+        self.vo_c = vo_c
+        self.vi_c = vi_c
+        self.be_c = be_c
+        self.bk_c = bk_c
+        self.vo_ap = vo_ap
+        self.vi_ap = vi_ap
+        self.be_ap = be_ap
+        self.bk_ap = bk_ap
 
     def _as_tuple(self):
         return (self.vo_c, self.vi_c, self.be_c, self.bk_c,
