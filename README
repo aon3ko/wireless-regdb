@@ -1,3 +1,7 @@
+ wireless-regdb
+================
+<https://wireless.wiki.kernel.org/en/developers/regulatory/wireless-regdb>
+
 This repository contains the plain text version of the regulatory
 database file I maintain for use with Central Regulatory Database
 Agent daemon.  Also included is the compiled binary version of this
@@ -8,6 +12,7 @@ either expressed or implied.
 
 Also included are the tools used to compile and sign the regulatory.bin
 file as well as a MoinMoin macro used for viewing the database.
+
 
  TECHNICAL INFORMATION
 =======================
@@ -21,9 +26,13 @@ to allow viewing the database for verification.
 The dbparse module is also used by db2bin.py and db2fw.py, the `compilers'
 that compile the database to its binary formats.
 
-For more information, please see the CRDA git repository:
+For more information, please see the CRDA page:
 
-	git://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/crda.git
+	https://wireless.wiki.kernel.org/en/developers/regulatory/crda
+
+and the full description of the Linux regulatory stack:
+
+	https://wireless.wiki.kernel.org/en/developers/regulatory
 
 John W. Linville
 17 November 2008
