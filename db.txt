@@ -359,13 +359,6 @@ country CZ: DFS-ETSI
 # Funkanwendungen zur breitbandigen Datenübertragung, WAS/WLAN („Wireless
 # Access Systems including Wireless Local Area Networks“).
 # https://www.bundesnetzagentur.de/SharedDocs/Downloads/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Frequenzen/Allgemeinzuteilungen/2010_07_WLAN_5GHz_pdf.pdf
-# The values for the 5 GHz have been reduced by a factor of 2 (3db) for non TPC
-# devices (in other words: devices with TPC can use twice the tx power of this
-# table). Note that the docs do not require TPC for 5150--5250; the reduction
-# to 100mW thus is not strictly required -- however the conservative 100mW
-# limit is used here as the non-interference with radar and satellite
-# apps relies on the attenuation by the building walls only in the
-# absence of DFS; the neighbour countries have 100mW limit here as well.
 #
 # The ETSI EN 300 440-1 standard for short range devices in the 5 GHz band has
 # been implemented in Germany:
