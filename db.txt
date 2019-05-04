@@ -432,7 +432,7 @@ country EG: DFS-ETSI
 
 # Source:
 # Cuadro nacional de atribución de frecuencias (CNAF)
-# http://www.mincotur.gob.es/telecomunicaciones/espectro/paginas/cnaf.aspx
+# https://avancedigital.gob.es/espectro/Paginas/cnaf.aspx
 country ES: DFS-ETSI
 	(2400 - 2483.5 @ 40), (100 mW)
 	(5150 - 5250 @ 80), (200 mW), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
