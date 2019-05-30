@@ -316,7 +316,7 @@ country CR: DFS-FCC
 	(5735 - 5835 @ 20), (30)
 
 # Source:
-# http://www.mincom.gob.cu/?q=marcoregulatorio
+# https://www.mincom.gob.cu/es/marco-legal
 # - Redes Informáticas
 # Resolución 127- 2011 Reglamento de Banda de frecuencias de 2,4 GHz.
 country CU: DFS-FCC
