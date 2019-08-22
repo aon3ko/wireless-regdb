@@ -85,7 +85,7 @@ countrynames = list(countries)
 countrynames.sort()
 for alpha2 in countrynames:
     coll = countries[alpha2]
-    output.write(struct.pack('>BB', alpha2[0], alpha2[1]))
+    output.write(struct.pack('>2s', alpha2))
     country_ptrs[alpha2] = PTR(output)
 output.write(b'\x00' * 4)
 

@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from builtins import bytes
 from functools import total_ordering
 import sys, math
 from math import ceil, log
@@ -359,7 +358,7 @@ class DBParser(object):
         for cname in cnames:
             if len(cname) != 2:
                 self._warn("country '%s' not alpha2" % cname)
-            cname = bytes(cname, 'ascii')
+            cname = cname.encode('ascii')
             if not cname in self._countries:
                 self._countries[cname] = Country(dfs_region, comments=self._comments)
             self._current_countries[cname] = self._countries[cname]
