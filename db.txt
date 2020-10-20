@@ -1244,8 +1244,10 @@ country PH: DFS-FCC
 	(5735 - 5835 @ 80), (30)
 
 country PK: DFS-JP
+	# https://fab.gov.pk/type-approval/
+	# https://pta.gov.pk/media/Pakistan_Table_of_Frequency_Allocations.pdf
 	(2402 - 2482 @ 40), (20)
-	(5735 - 5835 @ 80), (30)
+	(5725 - 5875 @ 80), (30)
 
 # PL as part of EU/CEPT accepted decisions 2005/513/EC (5GHz RLAN, EN 301 893)
 # and 2006/771/EC (amended by 2008/432/EC, Short-Range Devices, EN 300 440)
