@@ -872,13 +872,15 @@ country KY: DFS-FCC
 	(5735 - 5835 @ 80), (30)
 
 # Source:
-# http://mic.gov.kz/sites/default/files/pages/pravila_prisvoeniya_polos_chastot_no34.pdf
-# http://adilet.zan.kz/rus/docs/P000001379_
+# http://adilet.zan.kz/rus/docs/V1500010730
+# http://adilet.zan.kz/rus/docs/V1500010375
 country KZ: DFS-ETSI
-	(2402 - 2482 @ 40), (20)
-	(5150 - 5250 @ 80), (20), NO-OUTDOOR, AUTO-BW
+	(2400 - 2483.5 @ 40), (20)
+	(5150 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW
 	(5250 - 5350 @ 80), (20), NO-OUTDOOR, DFS, AUTO-BW
-	(5470 - 5725 @ 80), (20), NO-OUTDOOR, DFS
+	(5470 - 5725 @ 160), (20), NO-OUTDOOR, DFS
+	(5725 - 5850 @ 80), (20), NO-OUTDOOR
+	(57000 - 66000 @ 2160), (40)
 
 country LB: DFS-FCC
 	(2402 - 2482 @ 40), (20)
