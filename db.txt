@@ -372,11 +372,12 @@ country CR: DFS-FCC
 	(5735 - 5835 @ 20), (30)
 
 # Source:
-# https://www.mincom.gob.cu/es/marco-legal
-# - Redes Informáticas
-# Resolución 127- 2011 Reglamento de Banda de frecuencias de 2,4 GHz.
+# https://www.mincom.gob.cu/sites/default/files/marcoregulatorio/r_98-19_reglamento_redes_inalambricas.pdf
 country CU: DFS-FCC
 	(2400 - 2483.5 @ 40), (200 mW)
+	(5150 - 5350 @ 80), (200 mW), NO-IR, NO-OUTDOOR
+	(5470 - 5725 @ 80), (250 mW), NO-IR
+	(5725 - 5850 @ 80), (200 mW)
 
 country CX: DFS-FCC
 	(2402 - 2482 @ 40), (20)
