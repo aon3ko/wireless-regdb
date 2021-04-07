@@ -372,6 +372,9 @@ country CR: DFS-FCC
 	(5735 - 5835 @ 20), (30)
 
 # Source:
+# https://www.mincom.gob.cu/es/marco-legal
+# - Redes Informáticas
+#    Resolución 98- 2019 Reglamento de Redes Inalámbricas:
 # https://www.mincom.gob.cu/sites/default/files/marcoregulatorio/r_98-19_reglamento_redes_inalambricas.pdf
 country CU: DFS-FCC
 	(2400 - 2483.5 @ 40), (200 mW)
