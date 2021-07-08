@@ -1593,7 +1593,7 @@ country US: DFS-FCC
 	(5730 - 5850 @ 160), (30), AUTO-BW
 	# https://www.federalregister.gov/documents/2021/05/03/2021-08802/use-of-the-5850-5925-ghz-band
 	# max. 33 dBm AP @ 20MHz, 36 dBm AP @ 40Mhz+, 6 dB less for clients
-	(5850 - 5895 @ 160), (27), NO-OUTDOOR, PTMP-ONLY, AUTO-BW, NO-IR
+	(5850 - 5895 @ 160), (27), NO-OUTDOOR, AUTO-BW, NO-IR
 	# 60g band
 	# reference: section IV-D https://docs.fcc.gov/public/attachments/FCC-16-89A1.pdf
 	# channels 1-6 EIRP=40dBm(43dBm peak)
