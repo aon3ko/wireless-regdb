@@ -10,6 +10,9 @@ wmmrule ETSI:
 
 # This is the world regulatory domain
 country 00:
+	# There is no global intersection for 802.11ah, so just mark the entire
+	# possible band as NO-IR
+	(755 - 928 @ 2), (20), NO-IR
 	(2402 - 2472 @ 40), (20)
 	# Channel 12 - 13.
 	(2457 - 2482 @ 20), (20), NO-IR, AUTO-BW
