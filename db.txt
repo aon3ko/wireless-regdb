@@ -777,10 +777,19 @@ country IE: DFS-ETSI
 	# 60 GHz band channels 1-4 (ETSI EN 302 567)
 	(57000 - 66000 @ 2160), (40)
 
+# IL: Wireless Telegraph Regulations (type approval) (2021)
+# IL: published on 29 March 2021 in KOVETS HATAKANOT No. 9301.
+# IL: https://www.gov.il/he/departments/legalInfo/telegraph_law
+# IL: official document (pdf): https://rfa.justice.gov.il/SearchPredefinedApi/Documents/IdngyMn~ojdQSrkxuAqfZqiM8c1foi3TSZQhp7OMszo=
+# IL: also available as unofficial word doc: https://www.nevo.co.il/Handlers/LawOpenDoc.ashx?id=199708
 country IL: DFS-ETSI
 	(2402 - 2482 @ 40), (20)
 	(5150 - 5250 @ 80), (200 mW), NO-OUTDOOR, AUTO-BW
 	(5250 - 5350 @ 80), (200 mW), NO-OUTDOOR, DFS, AUTO-BW
+	# Table B List of conditions, row 63, indoor short range device without TPC (ETSI EN 301 893)
+	(5470 - 5725 @ 160), (500 mW), NO-OUTDOOR, DFS, AUTO-BW, wmmrule=ETSI
+	# Table B List of conditions, row 68, wireless device using 802.11a/n/ac protocol
+	(5725 - 5875 @ 80), (200 mW), AUTO-BW
 
 country IN:
 	(2402 - 2482 @ 40), (20)
