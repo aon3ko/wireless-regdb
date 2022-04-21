@@ -298,8 +298,9 @@ country BZ: DFS-JP
 	(2402 - 2482 @ 40), (30)
 	(5735 - 5835 @ 80), (30)
 
-# Source:
+# Sources:
 # https://www.ic.gc.ca/eic/site/smt-gst.nsf/vwapj/rss-247-i2-e.pdf/$file/rss-247-i2-e.pdf
+# https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf11750.html (6 GHz operation)
 country CA: DFS-FCC
 	(2402 - 2472 @ 40), (30)
 	(5150 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW
@@ -307,6 +308,7 @@ country CA: DFS-FCC
 	(5470 - 5600 @ 80), (24), DFS
 	(5650 - 5730 @ 80), (24), DFS
 	(5735 - 5835 @ 80), (30)
+	(5925 - 7125 @ 320), (12), NO-OUTDOOR
 
 # Source:
 # http://www.art-rca.org
