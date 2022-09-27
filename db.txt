@@ -358,8 +358,10 @@ country CH: DFS-ETSI
 	(5470 - 5725 @ 160), (500 mW), DFS, wmmrule=ETSI
 	# short range devices (ETSI EN 300 440-1)
 	(5725 - 5875 @ 80), (25 mW)
-	# 60 GHz band channels 1-4 (ETSI EN 302 567)
-	(57000 - 66000 @ 2160), (40)
+	# https://www.ofcomnet.ch/api/rir/1010/11
+	(5945 - 6425 @ 160), (200 mW), NO-OUTDOOR, wmmrule=ETSI
+	# https://www.ofcomnet.ch/api/rir/1010/07
+	(57000 - 71000 @ 2160), (40)
 
 country CI: DFS-FCC
 	(2402 - 2482 @ 40), (20)
