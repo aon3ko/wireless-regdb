@@ -850,11 +850,14 @@ country IL: DFS-ETSI
 	# Table B List of conditions, row 68, wireless device using 802.11a/n/ac protocol
 	(5725 - 5875 @ 80), (200 mW), AUTO-BW
 
+# Source:
+# https://dot.gov.in/spectrummanagement/delicensing-24-24835-ghz-band-gsr-45-e-5150-5350-ghz-gsr-46-e-and-5725-5875-ghz
+# https://dot.gov.in/spectrummanagement/license-exemption-5-ghz-gsr-1048e-dated-22102018
 country IN:
-	(2402 - 2482 @ 40), (20)
+	(2402 - 2482 @ 40), (30)
 	(5150 - 5250 @ 80), (30)
-	(5250 - 5350 @ 80), (24)
-	(5470 - 5725 @ 160), (24)
+	(5250 - 5350 @ 80), (24), DFS
+	(5470 - 5725 @ 160), (24), DFS
 	(5725 - 5875 @ 80), (30)
 
 country IR: DFS-JP
