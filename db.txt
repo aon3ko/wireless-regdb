@@ -748,12 +748,16 @@ country GY:
 	(5490 - 5730 @ 160), (23), DFS
 	(5735 - 5835 @ 80), (30)
 
+# Source:
+# https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1039.pdf (2.4 GHz and 5 GHz)
+# https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1081.pdf (6 GHz)
 country HK: DFS-ETSI
-	(2402 - 2482 @ 40), (20)
-	(5170 - 5250 @ 80), (17), AUTO-BW
-	(5250 - 5330 @ 80), (24), DFS, AUTO-BW
-	(5490 - 5710 @ 160), (24), DFS
-	(5735 - 5835 @ 80), (30)
+	(2400 - 2483.5 @ 40), (36)
+	(5150 - 5250 @ 80), (23), AUTO-BW, NO-OUTDOOR
+	(5250 - 5350 @ 80), (23), DFS, AUTO-BW, NO-OUTDOOR
+	(5470 - 5730 @ 160), (27), DFS
+	(5730 - 5850 @ 80), (36)
+	(5925 - 6425 @ 160), (14)
 
 country HN: DFS-FCC
 	(2402 - 2482 @ 40), (20)
