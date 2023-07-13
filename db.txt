@@ -1677,14 +1677,14 @@ country TN: DFS-ETSI
 	(5250 - 5330 @ 80), (20), DFS, AUTO-BW
 
 # Source:
-# By-Law on Short Range Radio Devices (SRD) Oct 2015
-# https://www.btk.gov.tr/File/?path=ROOT%2f1%2fDocuments%2fOrdinance%2fBY%2DLAW%20ON%20SHORT%20RANGE%20DEVICES.pdf
-# Article 8
+# Technical Criteria for Radio Devices and Systems Excluded from Frequency Allocation, Sept 9, 2022
+# https://www.btk.gov.tr/uploads/pages/ftm-teknik-olcutler-ek-5.pdf
 country TR: DFS-ETSI
 	(2400 - 2483.5 @ 40), (20)
-	(5170 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW
-	(5250 - 5330 @ 80), (20), DFS, NO-OUTDOOR, AUTO-BW
-	(5470 - 5725 @ 160), (27), DFS
+	(5150 - 5250 @ 80), (23), NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
+	(5250 - 5330 @ 80), (20), DFS, NO-OUTDOOR, AUTO-BW, wmmrule=ETSI
+	(5470 - 5725 @ 160), (27), DFS, wmmrule=ETSI
+	(5495 - 6425 @ 160), (23), NO-OUTDOOR, wmmrule=ETSI
 	# 60 GHz band channels 1-4, ref: Etsi En 302 567
 	(57000 - 66000 @ 2160), (40)
 
