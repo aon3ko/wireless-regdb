@@ -69,6 +69,7 @@ regulatory.db.p7s: regulatory.db $(REGDB_PRIVKEY) $(REGDB_PUBCERT)
 		-signer $(REGDB_PUBCERT) \
 		-inkey $(REGDB_PRIVKEY) \
 		-in $< -nosmimecap -binary \
+		-noattr \
 		-outform DER -out $@
 
 sha1sum.txt: db.txt
