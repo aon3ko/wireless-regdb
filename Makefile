@@ -34,7 +34,7 @@ REGDB_PRIVKEY ?= ~/.wireless-regdb-$(REGDB_AUTHOR).key.priv.pem
 REGDB_PUBKEY ?= $(REGDB_AUTHOR).key.pub.pem
 REGDB_PUBCERT ?= $(REGDB_AUTHOR).x509.pem
 
-REGDB_UPSTREAM_PUBKEY ?= sforshee.key.pub.pem
+REGDB_UPSTREAM_PUBKEY ?= wens.key.pub.pem
 
 REGDB_CHANGED = $(shell $(SHA1SUM) -c --status sha1sum.txt >/dev/null 2>&1; \
         if [ $$? -ne 0 ]; then \
