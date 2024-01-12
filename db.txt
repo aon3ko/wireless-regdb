@@ -1594,10 +1594,7 @@ country SE: DFS-ETSI
 # 5725 - 5850 MHz: IMDA TS SRD, Table 1 Sub-band 35
 # 5945 - 6425 MHz: IMDA TS SRD, Table 1 Sub-band 45b
 # 57000 - 66000 MHz: IMDA TS SRD, Table 1 Sub-band 40
-# Note: 500mW for 5470-5725MHz bands per FCC Part 15 Section 15.407 (2) 5.47-5.725 GHz as referenced by IMDA TS SRD
-#  AU and BG regulatory domains use the same interpretation of cited FCC and ETSI standards
 # Note: The transmit power for 5250-5350MHz bands can be raised (by 3dBm) to 200mW when TPC is implemented: IMDA TS SRD, Table 1 Sub-band 33a
-# Note: The transmit power for 5470-5725MHz bands can be raised (by 3dBm) to 1000mW when TPC is implemented: IMDA TS SRD Table 1 Sub-band 34
 
 country SG: DFS-FCC
 	(2400 - 2483.5 @ 40), (200 mW)
@@ -1607,7 +1604,8 @@ country SG: DFS-FCC
         # Since 5725 ~ 5730 MHz belongs to the next range which has looser
         # requirements, we can extend the range by 5 MHz to make the kernel
         # happy and be able to use channel 144.
-	(5470 - 5730 @ 160), (500 mW), DFS
+	# 5470 - 5730 requires (unimplemented) TPC per legislation
+        #(5470 - 5730 @ 160), (1000 mW), DFS
 	(5725 - 5850 @ 80), (1000 mW)
 	(5945 - 6425 @ 320), (250 mW), NO-OUTDOOR
 	(57000 - 66000 @ 2160), (10000 mW)
